@@ -6,20 +6,13 @@
     <title>Amsterdam Roleplay | Home</title>
     <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', 'Arial', sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #0f0f1a 50%, #1a1a2e 100%);
             color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
         }
-
         .bg-animation {
             position: fixed;
             top: 0;
@@ -29,7 +22,6 @@
             z-index: -1;
             overflow: hidden;
         }
-
         .bg-animation::before {
             content: '';
             position: absolute;
@@ -38,31 +30,15 @@
             background: radial-gradient(circle, rgba(135,206,235,0.08) 0%, transparent 70%);
             animation: rotate 40s linear infinite;
         }
-
-        .bg-animation::after {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
-            animation: rotateReverse 30s linear infinite;
-        }
-
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        @keyframes rotateReverse {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
-        }
-
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
+            padding: 15px 50px;
             background: rgba(0,0,0,0.4);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(135,206,235,0.2);
@@ -70,427 +46,50 @@
             top: 0;
             z-index: 100;
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(135,206,235,0.3);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .logo-text {
-            font-size: 1.5em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #87CEEB, #4FC3F7, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 25px;
-            transition: all 0.3s;
-            position: relative;
-            font-weight: 500;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #87CEEB, #4FC3F7);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover::before, .nav-link.active::before {
-            width: 70%;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background: rgba(135,206,235,0.1);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            position: relative;
-        }
-
-        .hero-logo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin-bottom: 30px;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 0 60px rgba(135,206,235,0.4);
-            border: 3px solid rgba(135,206,235,0.3);
-        }
-
-        .hero h1 {
-            font-size: 3.8em;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #87CEEB, #4FC3F7, #FFD700, #87CEEB);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 5s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-        }
-
-        .bots-section {
-            padding: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2em;
-            margin-bottom: 50px;
-            color: #87CEEB;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(135deg, #87CEEB, #4FC3F7);
-            border-radius: 3px;
-        }
-
-        .bots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .bot-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(12px);
-            border-radius: 25px;
-            padding: 35px 25px;
-            text-align: center;
-            border: 1px solid rgba(135,206,235,0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bot-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(135,206,235,0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .bot-card:hover::before {
-            left: 100%;
-        }
-
-        .bot-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #87CEEB;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-
-        .bot-icon {
-            font-size: 4.5em;
-            margin-bottom: 20px;
-        }
-
-        .bot-card h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .bot-status {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            margin: 15px 0;
-            font-weight: bold;
-        }
-
-        .status-online { background: rgba(0,255,0,0.2); color: #00ff00; box-shadow: 0 0 10px rgba(0,255,0,0.2); }
-        .status-offline { background: rgba(255,0,0,0.2); color: #ff4444; }
-        .status-checking { background: rgba(255,165,0,0.2); color: #ffa500; }
-
-        .bot-description {
-            color: #bbb;
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin: 15px 0;
-        }
-
-        .bot-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .feature-tag {
-            background: rgba(135,206,235,0.15);
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 0.7em;
-            transition: all 0.3s;
-        }
-
-        .feature-tag:hover {
-            background: rgba(135,206,235,0.3);
-            transform: scale(1.05);
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #87CEEB, #4FC3F7);
-            border: none;
-            color: #1a1a2e;
-            padding: 14px 35px;
-            border-radius: 40px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 25px;
-            display: inline-block;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(135,206,235,0.2);
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(135,206,235,0.4);
-        }
-
-        .stats-preview {
-            background: rgba(0,0,0,0.3);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 50px auto;
-            max-width: 1000px;
-            text-align: center;
-        }
-
-        .stats-preview h3 {
-            color: #87CEEB;
-            margin-bottom: 20px;
-        }
-
-        .preview-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .preview-item {
-            text-align: center;
-        }
-
-        .preview-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #FFD700;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 50px;
-            font-size: 0.8em;
-            opacity: 0.6;
-        }
-
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+        .logo-text { font-size: 1.4em; font-weight: bold; background: linear-gradient(135deg, #87CEEB, #4FC3F7, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-link { color: #fff; text-decoration: none; padding: 8px 20px; border-radius: 25px; transition: all 0.3s; position: relative; }
+        .nav-link::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #87CEEB, #4FC3F7); transition: width 0.3s; }
+        .nav-link:hover::before, .nav-link.active::before { width: 70%; }
+        .nav-link:hover, .nav-link.active { background: rgba(135,206,235,0.1); }
+        .hero { text-align: center; padding: 80px 20px; }
+        .hero-logo { width: 160px; height: 160px; border-radius: 50%; margin-bottom: 30px; animation: float 3s ease-in-out infinite; box-shadow: 0 0 50px rgba(135,206,235,0.4); }
+        .hero h1 { font-size: 3.5em; margin-bottom: 20px; background: linear-gradient(135deg, #87CEEB, #4FC3F7, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.1em; color: #ccc; max-width: 600px; margin: 0 auto 30px; }
+        .btn { background: linear-gradient(135deg, #87CEEB, #4FC3F7); border: none; color: #1a1a2e; padding: 12px 30px; border-radius: 40px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s; display: inline-block; text-decoration: none; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(135,206,235,0.3); }
+        .footer { text-align: center; padding: 25px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; font-size: 0.75em; opacity: 0.5; }
         @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 15px; padding: 20px; }
+            .navbar { flex-direction: column; gap: 15px; padding: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2.2em; }
+            .hero h1 { font-size: 2em; }
             .hero-logo { width: 120px; height: 120px; }
-            .bots-section { padding: 20px; }
-            .bots-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
-
     <nav class="navbar">
         <div class="logo">
-            <img src="https://cdn.discordapp.com/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png" alt="Amsterdam Logo" class="logo-img">
+            <img src="https://cdn.discordapp.com/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png" alt="Logo" class="logo-img">
             <span class="logo-text">Amsterdam Roleplay</span>
         </div>
         <div class="nav-links">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="dashboard.html" class="nav-link">Dashboard</a>
-            <a href="logs.html" class="nav-link">Logs</a>
-            <a href="embed-sender.html" class="nav-link">Embed Sender</a>
         </div>
     </nav>
-
     <section class="hero">
         <img src="https://cdn.discordapp.com/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png" alt="Amsterdam Roleplay" class="hero-logo">
-        <h1>Welkom bij Amsterdam Roleplay</h1>
+        <h1>Amsterdam Roleplay</h1>
         <p>Het centrale platform voor het beheer van alle overheids-, onderwereld- en invite-systemen van Amsterdam Roleplay.</p>
-        <a href="dashboard.html" class="btn">📊 Bekijk Dashboard</a>
+        <a href="dashboard.html" class="btn">📊 Ga naar Dashboard</a>
     </section>
-
-    <section class="bots-section">
-        <h2 class="section-title">🤖 Onze Bots</h2>
-        <div class="bots-grid">
-            <div class="bot-card" onclick="location.href='dashboard.html?bot=overheid'">
-                <div class="bot-icon">🏛️</div>
-                <h3>Overheid Bot</h3>
-                <div id="home-overheid-status" class="bot-status status-checking">⏳ Controleren...</div>
-                <p class="bot-description">VOG systeem, roepnummers, trainingen, sollicitaties en klachtenafhandeling.</p>
-                <div class="bot-features">
-                    <span class="feature-tag">📋 VOG</span>
-                    <span class="feature-tag">📞 Roepnummers</span>
-                    <span class="feature-tag">📚 Trainingen</span>
-                    <span class="feature-tag">📝 Sollicitaties</span>
-                </div>
-            </div>
-
-            <div class="bot-card" onclick="location.href='dashboard.html?bot=onderwereld'">
-                <div class="bot-icon">🔫</div>
-                <h3>Onderwereld Bot</h3>
-                <div id="home-onderwereld-status" class="bot-status status-checking">⏳ Controleren...</div>
-                <p class="bot-description">Gang strikes, tickets, suggesties en staff reply systeem.</p>
-                <div class="bot-features">
-                    <span class="feature-tag">💥 Gang Strikes</span>
-                    <span class="feature-tag">🎫 Tickets</span>
-                    <span class="feature-tag">💡 Suggesties</span>
-                    <span class="feature-tag">📝 Staff Replies</span>
-                </div>
-            </div>
-
-            <div class="bot-card" onclick="location.href='dashboard.html?bot=invite'">
-                <div class="bot-icon">🎉</div>
-                <h3>Invite Bot</h3>
-                <div id="home-invite-status" class="bot-status status-checking">⏳ Controleren...</div>
-                <p class="bot-description">Invite tracker, leaderboard, beloningen en uitgebreide statistieken.</p>
-                <div class="bot-features">
-                    <span class="feature-tag">📊 Leaderboard</span>
-                    <span class="feature-tag">🎁 Beloningen</span>
-                    <span class="feature-tag">📈 Statistieken</span>
-                    <span class="feature-tag">👑 Medailles</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="stats-preview">
-        <h3>📊 Live Statistieken</h3>
-        <div class="preview-grid">
-            <div class="preview-item">
-                <div class="preview-number" id="total-vogs">--</div>
-                <div>Goedgekeurde VOGs</div>
-            </div>
-            <div class="preview-item">
-                <div class="preview-number" id="total-invites">--</div>
-                <div>Totaal Invites</div>
-            </div>
-            <div class="preview-item">
-                <div class="preview-number" id="total-tickets">--</div>
-                <div>Afgehandelde Tickets</div>
-            </div>
-        </div>
-    </div>
-
     <footer class="footer">
-        <p>🏛️ Gemeente Amsterdam - Bot Status Dashboard</p>
-        <p>Status wordt elke 30 seconden ververst</p>
-        <p>© 2026 Amsterdam Roleplay | Alle rechten voorbehouden</p>
+        <p>🏛️ Gemeente Amsterdam - Bot Status Dashboard | © 2026 Amsterdam Roleplay</p>
     </footer>
-
-    <script>
-        async function checkHomeBotStatus() {
-            const bots = {
-                overheid: { url: 'https://overheid-bot.onrender.com/health', element: 'home-overheid-status' },
-                onderwereld: { url: 'https://onderwereld-bot.onrender.com/health', element: 'home-onderwereld-status' },
-                invite: { url: 'https://invite-bot-te4o.onrender.com/health', element: 'home-invite-status' }
-            };
-
-            for (const [key, bot] of Object.entries(bots)) {
-                const statusEl = document.getElementById(bot.element);
-                try {
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 5000);
-                    const response = await fetch(bot.url, { signal: controller.signal });
-                    clearTimeout(timeoutId);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        statusEl.className = 'bot-status status-online';
-                        statusEl.innerHTML = '🟢 Online';
-                        
-                        if (key === 'overheid') document.getElementById('total-vogs').innerText = data.vogCount || '0';
-                        if (key === 'invite') document.getElementById('total-invites').innerText = data.totalInvites || '0';
-                        if (key === 'onderwereld') document.getElementById('total-tickets').innerText = data.tickets || '0';
-                    } else {
-                        throw new Error('Offline');
-                    }
-                } catch (error) {
-                    statusEl.className = 'bot-status status-offline';
-                    statusEl.innerHTML = '🔴 Offline';
-                }
-            }
-        }
-
-        checkHomeBotStatus();
-        setInterval(checkHomeBotStatus, 30000);
-    </script>
 </body>
 </html>

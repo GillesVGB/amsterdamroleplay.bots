@@ -818,6 +818,8 @@ body.dark-mode #scrollTopBtn:hover {
         </footer>
     </div>
 </div>
+    <button id="scrollTopBtn">↑</button>
+
 <script>
 // =============================================================
 // COMPLETE 62 ARTIKELEN - VOLLEDIGE ONVERKORTE TEKST
@@ -974,8 +976,12 @@ document.addEventListener('keydown', function(e) {
         document.getElementById('searchInput')?.focus();
     }
 });
-document.getElementById('scrollTopBtn').addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+document.getElementById('scrollTopBtn')?.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
     document.querySelector('a[href="#apv"]')?.addEventListener('click', function(e) {
     e.preventDefault();
@@ -1001,7 +1007,6 @@ window.addEventListener('scroll', function() {
         btn.classList.remove('visible');
     }
 });
-    </script>
-    <button id="scrollTopBtn">↑</button>
+</script>
 </body>
 </html>

@@ -115,7 +115,7 @@ body {
     gap: 6px;
 }
 .dropdown-content {
-    display: none;
+    display: block;
     position: absolute;
     top: 110%;
     left: 0;
@@ -760,7 +760,7 @@ for (let i = 21; i <= 62; i++) {
     else if (i === 61) allRules.push({ num: "61", title: "Combat Gedrag", sanctie: "Categorie 7", catClass: "cat7", content: "<p><strong>Wat houdt dit in?</strong><br>Alleen combat zoeken, geen roleplay.</p><p><strong>Straf:</strong> Categorie 7 (30 dagen ban).</p>" });
     else if (i === 62) allRules.push({ num: "62", title: "Haat veroorzakend", sanctie: "Categorie 5", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Toxic op Twitter, tickets zonder reden, Discord toxiciteit.</p><p><strong>Straf:</strong> Categorie 5 (7-14 dagen).</p><p><strong>Onthoud:</strong> Gezond verstand gaat boven alle regels - roleplay draait om samen plezier.</p>" });
 }
-    function buildAccordion(filterText = "") {
+function buildAccordion(filterText = "") {
     const root = document.getElementById("accordion-root");
     if (!root) return;
     root.innerHTML = "";
@@ -775,7 +775,7 @@ for (let i = 21; i <= 62; i++) {
     filtered.forEach(rule => {
         const card = document.createElement("div"); 
         card.className = "rule-card";
-        card.dataset.match = "true"; // Markeer als match
+        card.dataset.match = "true";
         
         const header = document.createElement("div"); 
         header.className = "rule-header";
@@ -799,7 +799,13 @@ for (let i = 21; i <= 62; i++) {
     });
 }
 
-// Zoekfunctie met automatisch scrollen en openen
+// Bouw de accordion
+buildAccordion("");
+
+// OPEN ALLE ARTIKELEN STANDAARD BIJ LADEN
+document.querySelectorAll('.rule-content').forEach(el => el.classList.add('open'));
+
+// Zoekfunctie
 document.getElementById("searchInput")?.addEventListener("input", function(e) {
     const filterText = e.target.value.trim();
     buildAccordion(filterText);
@@ -809,19 +815,16 @@ document.getElementById("searchInput")?.addEventListener("input", function(e) {
         setTimeout(() => {
             const firstResult = document.querySelector(".rule-card");
             if (firstResult) {
-                // Scroll naar het eerste resultaat
                 firstResult.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'center' 
                 });
                 
-                // Open het eerste gevonden artikel automatisch
                 const content = firstResult.querySelector(".rule-content");
                 if (content && !content.classList.contains("open")) {
                     content.classList.add("open");
                 }
                 
-                // Markeer het gevonden artikel met een highlight
                 firstResult.style.transition = "all 0.3s ease";
                 firstResult.style.borderColor = "#1a5276";
                 firstResult.style.boxShadow = "0 0 20px rgba(26, 82, 118, 0.3)";
@@ -834,9 +837,12 @@ document.getElementById("searchInput")?.addEventListener("input", function(e) {
     }
 });
 
-document.getElementById("resetFilterBtn")?.addEventListener("click", () => { 
+// Reset knop - NU CORRECT BUITEN DE ANDERE EVENT LISTENER
+document.getElementById("resetFilterBtn")?.addEventListener("click", function() { 
     document.getElementById("searchInput").value = ""; 
     buildAccordion("");
+    // Open alle artikelen weer na reset
+    document.querySelectorAll('.rule-content').forEach(el => el.classList.add('open'));
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
     </script>

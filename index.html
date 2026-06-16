@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -9,12 +8,6 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png?ex=6a3222b8&is=6a30d138&hm=d0d7f20844853317fb2cce30dac366f61e54194867d3fb0b54e02087479b4b71&=&format=webp&quality=lossless&width=525&height=525">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Amsterdam Roleplay · APV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -459,25 +452,25 @@ body {
         <img src="https://media.discordapp.net/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png?ex=6a3222b8&is=6a30d138&hm=d0d7f20844853317fb2cce30dac366f61e54194867d3fb0b54e02087479b4b71&=&format=webp&quality=lossless&width=525&height=525" alt="Amsterdam Roleplay">
         <span>Amsterdam RP</span>
     </a>
-    <div class="nav-links">
-        <a href="#apv" class="nav-btn">APV</a>
-        <a href="#discord-regels" class="nav-btn"> Discord Regels</a>
-        <a href="#regels" class="nav-btn">Algemene Regels</a>
-        <a href="#strafcategorieen" class="nav-btn">Strafcategorieën</a>
-        
-        <!-- Discord Dropdown -->
-        <div class="dropdown">
-            <button class="nav-btn dropdown-btn">
-                <i class="fas fa-chevron-down"></i> Links
-            </button>
-            <div class="dropdown-content">
-                <a href="https://discord.gg/PPcBUGhePj" target="_blank"><i class="fab fa-discord"></i> Amsterdam</a>
-                <a href="https://discord.gg/Ftvxq562bC" target="_blank"><i class="fas fa-headset"></i> Support</a>
-                <a href="https://discord.gg/3T5geFpt" target="_blank"><i class="fas fa-landmark"></i> Overheid</a>
-                <a href="https://discord.gg/bjmDfK6r68" target="_blank"><i class="fas fa-skull"></i> Onderwereld</a>
-            </div>
+<div class="nav-links">
+    <a href="#strafcategorieen" class="nav-btn">Strafcategorieën</a>
+    <a href="#apv" class="nav-btn">APV</a>
+    <a href="#discord-regels" class="nav-btn">Discord</a>
+    <a href="#regels" class="nav-btn">Regels</a>
+    
+    <!-- Discord Dropdown -->
+    <div class="dropdown">
+        <button class="nav-btn dropdown-btn">
+            Links <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="https://discord.gg/PPcBUGhePj" target="_blank"><i class="fab fa-discord"></i> Amsterdam</a>
+            <a href="https://discord.gg/Ftvxq562bC" target="_blank"><i class="fas fa-headset"></i> Support</a>
+            <a href="https://discord.gg/3T5geFpt" target="_blank"><i class="fas fa-landmark"></i> Overheid</a>
+            <a href="https://discord.gg/bjmDfK6r68" target="_blank"><i class="fas fa-skull"></i> Onderwereld</a>
         </div>
     </div>
+</div>
 </nav>
 
     <!-- Hero -->
@@ -738,33 +731,85 @@ for (let i = 21; i <= 62; i++) {
     else if (i === 61) allRules.push({ num: "61", title: "Combat Gedrag", sanctie: "Categorie 7", catClass: "cat7", content: "<p><strong>Wat houdt dit in?</strong><br>Alleen combat zoeken, geen roleplay.</p><p><strong>Straf:</strong> Categorie 7 (30 dagen ban).</p>" });
     else if (i === 62) allRules.push({ num: "62", title: "Haat veroorzakend", sanctie: "Categorie 5", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Toxic op Twitter, tickets zonder reden, Discord toxiciteit.</p><p><strong>Straf:</strong> Categorie 5 (7-14 dagen).</p><p><strong>Onthoud:</strong> Gezond verstand gaat boven alle regels - roleplay draait om samen plezier.</p>" });
 }
-
-function buildAccordion(filterText = "") {
+    function buildAccordion(filterText = "") {
     const root = document.getElementById("accordion-root");
     if (!root) return;
     root.innerHTML = "";
     const lowerFilter = filterText.toLowerCase();
     const filtered = allRules.filter(rule => !lowerFilter || rule.num.includes(lowerFilter) || rule.title.toLowerCase().includes(lowerFilter) || rule.sanctie.toLowerCase().includes(lowerFilter) || rule.content.toLowerCase().includes(lowerFilter));
-    if (filtered.length === 0) { root.innerHTML = `<div style="padding:2rem;text-align:center;color:#4a6a7a;">Geen artikelen gevonden voor "${filterText}".</div>`; return; }
+    
+    if (filtered.length === 0) { 
+        root.innerHTML = `<div style="padding:2rem;text-align:center;color:#4a6a7a;">Geen artikelen gevonden voor "${filterText}".</div>`; 
+        return; 
+    }
+    
     filtered.forEach(rule => {
-        const card = document.createElement("div"); card.className = "rule-card";
-        const header = document.createElement("div"); header.className = "rule-header";
-        const titleDiv = document.createElement("div"); titleDiv.className = "rule-title";
+        const card = document.createElement("div"); 
+        card.className = "rule-card";
+        card.dataset.match = "true"; // Markeer als match
+        
+        const header = document.createElement("div"); 
+        header.className = "rule-header";
+        const titleDiv = document.createElement("div"); 
+        titleDiv.className = "rule-title";
         titleDiv.innerHTML = `<span class="rule-nummer">Art. ${rule.num}</span> <span class="rule-naam">${rule.title}</span>`;
-        const badge = document.createElement("span"); badge.className = `sanction-badge ${rule.catClass}`;
+        const badge = document.createElement("span"); 
+        badge.className = `sanction-badge ${rule.catClass}`;
         badge.innerHTML = `${rule.sanctie}`;
-        header.appendChild(titleDiv); header.appendChild(badge);
-        const contentDiv = document.createElement("div"); contentDiv.className = "rule-content";
+        header.appendChild(titleDiv); 
+        header.appendChild(badge);
+        
+        const contentDiv = document.createElement("div"); 
+        contentDiv.className = "rule-content";
         contentDiv.innerHTML = rule.content;
+        
         header.addEventListener("click", () => contentDiv.classList.toggle("open"));
-        card.appendChild(header); card.appendChild(contentDiv);
+        card.appendChild(header); 
+        card.appendChild(contentDiv);
         root.appendChild(card);
     });
 }
 
-document.getElementById("searchInput")?.addEventListener("input", e => buildAccordion(e.target.value));
-document.getElementById("resetFilterBtn")?.addEventListener("click", () => { document.getElementById("searchInput").value = ""; buildAccordion(""); });
-buildAccordion("");
-</script>
+// Zoekfunctie met automatisch scrollen en openen
+document.getElementById("searchInput")?.addEventListener("input", function(e) {
+    const filterText = e.target.value.trim();
+    buildAccordion(filterText);
+    
+    // Als er wordt gezocht, scroll naar en open het eerste resultaat
+    if (filterText.length > 0) {
+        setTimeout(() => {
+            const firstResult = document.querySelector(".rule-card");
+            if (firstResult) {
+                // Scroll naar het eerste resultaat
+                firstResult.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // Open het eerste gevonden artikel automatisch
+                const content = firstResult.querySelector(".rule-content");
+                if (content && !content.classList.contains("open")) {
+                    content.classList.add("open");
+                }
+                
+                // Markeer het gevonden artikel met een highlight
+                firstResult.style.transition = "all 0.3s ease";
+                firstResult.style.borderColor = "#1a5276";
+                firstResult.style.boxShadow = "0 0 20px rgba(26, 82, 118, 0.3)";
+                setTimeout(() => {
+                    firstResult.style.borderColor = "";
+                    firstResult.style.boxShadow = "";
+                }, 2000);
+            }
+        }, 150);
+    }
+});
+
+document.getElementById("resetFilterBtn")?.addEventListener("click", () => { 
+    document.getElementById("searchInput").value = ""; 
+    buildAccordion("");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+    </script>
 </body>
 </html>

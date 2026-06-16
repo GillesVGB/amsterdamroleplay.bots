@@ -363,7 +363,13 @@ body {
         .bg-cat8 { background: #f0d8b0; color: #5a3a1a; }
         .bg-cat9 { background: #f0b0b8; color: #5a1a2a; }
         .bg-var { background: #d4dce4; color: #1a2a3a; }
-
+body.dark-mode {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+body.dark-mode .docs-container { background: #16213e; }
+body.dark-mode .rule-header { background: #1a1a2e; }
+body.dark-mode .rule-content { background: #1f1f3a; }
         /* Accordion */
         .rule-card {
             background: #ffffff;
@@ -439,8 +445,16 @@ body {
             color: #1a2a3a;
             line-height: 1.55;
             border-radius: 0 0 20px 20px;
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.8rem;
         }
-        .rule-content.open { display: block; }
+        .rule-content.open { 
+            display: block; 
+            max-height: 2000px;
+            padding: 0.2rem 1.8rem 1.8rem 1.8rem;
+        }
         .rule-content p, .rule-content ul { margin: 0.8rem 0; }
         .rule-content li { margin-left: 1.5rem; margin-bottom: 0.3rem; }
         .rule-content strong { color: #1a5276; font-weight: 600; }
@@ -485,6 +499,7 @@ body {
     <a href="#apv" class="nav-btn">APV</a>
     <a href="#discord-regels" class="nav-btn">Discord Regels</a>
     <a href="#regels" class="nav-btn">Algemene Regels</a>
+    <button onclick="toggleDarkMode()" class="nav-btn" style="min-width: auto;">🌙</button>
     
     <!-- Discord Dropdown -->
     <div class="dropdown">
@@ -624,7 +639,9 @@ body {
 <!-- ============================================================
      REGELS SECTIE (VOLLEDIG)
      ============================================================ -->
-
+<div style="font-size: 0.85rem; color: #4a6a7a; margin-bottom: 1rem;">
+    <i class="fas fa-file-alt"></i> <span id="articleCount">62</span> artikelen geladen
+</div>
 <!-- Algemene Regels -->
 <div id="regels" class="section-title"><i class="fas fa-list-check"></i> Algemene Regels</div>
 <div style="background: #f8fafc; padding: 2rem; border-radius: 20px; border: 1px solid #dce4ec;">
@@ -684,7 +701,7 @@ body {
         </footer>
     </div>
 </div>
-
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="scrollTopBtn" style="position:fixed;bottom:20px;right:20px;background:#1a5276;color:white;border:none;border-radius:50%;width:50px;height:50px;font-size:1.5rem;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,0.3);">↑</button>
 <script>
 // =============================================================
 // COMPLETE 62 ARTIKELEN - VOLLEDIGE ONVERKORTE TEKST
@@ -838,6 +855,19 @@ document.addEventListener('keydown', function(e) {
         document.getElementById('searchInput')?.focus();
     }
 });
+document.querySelector('a[href="#apv"]')?.addEventListener('click', function(e) {
+    // Zorg dat alles dicht blijft
+    document.querySelectorAll('.rule-content').forEach(el => el.classList.remove('open'));
+});
+    function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+}
+    window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 300) btn.style.display = 'block';
+    else btn.style.display = 'none';
+});
+    
     </script>
 </body>
 </html>

@@ -134,6 +134,98 @@ body.dark-mode footer { background: #122230; color: #8aa8b8; border-top-color: #
 body.dark-mode .stat-chip { background: rgba(26,42,58,0.85); color: #e0e8f0; border-color: #2a5a7a; }
 body.dark-mode .nav-btn { border-color: #2a5a7a; color: #8ab8d8; }
 body.dark-mode .nav-btn:hover { background: #1a5276; color: white; }
+/* Discord Regels & Algemene Regels - Dark Mode */
+body.dark-mode #discord-regels + div,
+body.dark-mode #regels + div {
+    background: #122230 !important;
+    border-color: #2a4a5a !important;
+}
+body.dark-mode #discord-regels + div h3,
+body.dark-mode #regels + div h3 {
+    color: #8ab8d8 !important;
+}
+body.dark-mode #discord-regels + div > div,
+body.dark-mode #regels + div > div {
+    background: #1b2a3a !important;
+    border-color: #2a4a5a !important;
+    color: #d0d8e0 !important;
+}
+body.dark-mode #discord-regels + div > div h4 {
+    color: #e0e8f0 !important;
+}
+body.dark-mode #discord-regels + div > div p,
+body.dark-mode #regels + div > div p {
+    color: #d0d8e0 !important;
+}
+body.dark-mode #discord-regels + div > div:last-child {
+    background: #1a5276 !important;
+}
+body.dark-mode #discord-regels + div > div:last-child h4 {
+    color: white !important;
+}
+body.dark-mode #discord-regels + div > div:last-child p {
+    color: #e8f0f8 !important;
+}
+    /* Scroll naar boven knop - verbeterd */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #1a5276;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 20px rgba(26, 82, 118, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    animation: fadeInUp 0.3s ease;
+}
+#scrollTopBtn:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 30px rgba(26, 82, 118, 0.6);
+    background: #1a6a8a;
+}
+#scrollTopBtn:active {
+    transform: scale(0.95);
+}
+
+/* Dark mode */
+body.dark-mode #scrollTopBtn {
+    background: #2a6a8a;
+    box-shadow: 0 4px 20px rgba(42, 106, 138, 0.5);
+}
+body.dark-mode #scrollTopBtn:hover {
+    background: #3a8aaa;
+    box-shadow: 0 8px 30px rgba(42, 106, 138, 0.7);
+}
+
+/* Animatie */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobiel */
+@media (max-width: 750px) {
+    #scrollTopBtn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
 /* Dropdown */
 .dropdown {
     position: relative;

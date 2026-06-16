@@ -801,10 +801,6 @@ function buildAccordion(filterText = "") {
 
 // Bouw de accordion
 buildAccordion("");
-
-// OPEN ALLE ARTIKELEN STANDAARD BIJ LADEN
-document.querySelectorAll('.rule-content').forEach(el => el.classList.add('open'));
-
 // Zoekfunctie
 document.getElementById("searchInput")?.addEventListener("input", function(e) {
     const filterText = e.target.value.trim();
@@ -837,14 +833,6 @@ document.getElementById("searchInput")?.addEventListener("input", function(e) {
     }
 });
 
-// Reset knop - NU CORRECT BUITEN DE ANDERE EVENT LISTENER
-document.getElementById("resetFilterBtn")?.addEventListener("click", function() { 
-    document.getElementById("searchInput").value = ""; 
-    buildAccordion("");
-    // Open alle artikelen weer na reset
-    document.querySelectorAll('.rule-content').forEach(el => el.classList.add('open'));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
     </script>
 </body>
 </html>

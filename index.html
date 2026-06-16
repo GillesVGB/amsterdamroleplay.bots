@@ -976,21 +976,10 @@ document.addEventListener('keydown', function(e) {
 });
 
 document.getElementById('scrollTopBtn')?.addEventListener('click', function() {
-    const start = window.pageYOffset;
-    const duration = 800;
-    const startTime = performance.now();
-    
-    function scrollAnimation(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease In Out Cubic
-        const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-        window.scrollTo(0, start * (1 - ease));
-        if (progress < 1) {
-            requestAnimationFrame(scrollAnimation);
-        }
-    }
-    requestAnimationFrame(scrollAnimation);
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
     document.querySelector('a[href="#apv"]')?.addEventListener('click', function(e) {
     e.preventDefault();

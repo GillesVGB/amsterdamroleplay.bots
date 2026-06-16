@@ -152,6 +152,34 @@ body {
     background: #1a5276;
     color: white;
 }
+/* Dropdown knop styling - zelfde als nav-btn */
+.dropdown-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid #1a5276;
+    color: #1a5276;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+}
+
+.dropdown-btn:hover {
+    background: #1a5276;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 82, 118, 0.3);
+}
+
+.dropdown-btn:focus {
+    outline: none;
+}
         /* Hero */
         .hero {
             background: linear-gradient(135deg, #e8f0f6, #d4e4f0);
@@ -460,10 +488,11 @@ body {
     
     <!-- Discord Dropdown -->
     <div class="dropdown">
-        <button class="nav-btn dropdown-btn">
-            Links <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i>
-        </button>
-        <div class="dropdown-content">
+    <div class="dropdown">
+    <button class="nav-btn dropdown-btn">
+        Links <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i>
+    </button>
+    <div class="dropdown-content">
             <a href="https://discord.gg/PPcBUGhePj" target="_blank"><i class="fab fa-discord"></i> Amsterdam</a>
             <a href="https://discord.gg/Ftvxq562bC" target="_blank"><i class="fas fa-headset"></i> Support</a>
             <a href="https://discord.gg/3T5geFpt" target="_blank"><i class="fas fa-landmark"></i> Overheid</a>
